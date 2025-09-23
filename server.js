@@ -1,3 +1,4 @@
+const match = require('./match.js');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -11,6 +12,8 @@ app.get('/', (req, res) => {
 app.post('/get-match', (req, res) => {
     console.log("received: ", req.body);
     res.json({ status: 'ok', received: req.body });
+    new match.Match(req.body);
+    console.log("AJKSDH");
 });
 
 app.listen(port, () => {
