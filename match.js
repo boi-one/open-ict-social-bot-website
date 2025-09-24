@@ -12,6 +12,7 @@ class User
 
 class Match
 {   
+    static id = 0;
     host = null;
     invitee = null;
     winner = '';
@@ -19,6 +20,7 @@ class Match
 
     constructor(match)
     {
+        this.id++;
         this.host = new User(match.host.name, match.host.uid);
         this.invitee = new User(match.invitee.name, match.invitee.uid);
         matchManager.allMatches.push(this);

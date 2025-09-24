@@ -9,12 +9,15 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-app.post('/get-match', (req, res) => {
+app.post('/create-match', (req, res) => {
     console.log("received: ", req.body);
-    res.json({ status: 'ok', received: req.body });
-    new match.Match(req.body);
-    console.log("AJKSDH");
+    newestMatch = new match.Match(req.body);
+    res.send({customURL:`http://localhost/get-match?match=${String(newestMatch.id)}`}); //FIX NaN!!!!!!!!!!!!!!!!!!!!!!!!
 });
+
+app.post('/get-match', (req, res) => {
+    console.log("match geklikt ", req.query.match);
+}); 
 
 app.listen(port, () => {
     console.log(`listening on port: ${port}`);
