@@ -10,6 +10,7 @@ const port = 3000;
 app.use(express.json())
 app.use(express.static('public'));
 app.use(express.static('memory'));
+app.use(express.static('boterkaaseieren'));
 
 app.get('/', (req, res) => {
     res.send("via discord bot");
@@ -30,6 +31,11 @@ app.post('/ttt', (req, res) => {
     console.log("before");
     const matchData = match.matchManager.FindMatch(req.body.value);
     console.log("ttt connect", req.body);
+    res.sendFile(path.join(__dirname, 'boterkaaseieren', 'index.html'));
+});
+
+app.get('/ttt', (req,res) => {
+    res.sendFile(path.join(__dirname, 'boterkaaseieren', 'index.html'));
 });
 
 app.post('/memory', (req, res) => {
@@ -46,7 +52,8 @@ app.get('/memory', (req, res) => {
 const server = http.createServer(app);
 const io = new SocketIOServer(server); 
 
-require('./memory')(io, app);  
+require('./memory.js')(io, app);  
+require('./boterkaasei.js')(io, app);
 
 server.listen(port, () => {
   console.log(`listening on port: ${port}`);

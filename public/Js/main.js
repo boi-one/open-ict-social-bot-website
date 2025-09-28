@@ -52,7 +52,7 @@ fetch('Cards.JSON')
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({value})
             });
-            const responseData = await response.text();
+            responseData = await response.text();
             console.log(responseData);
             window.location.href = tttUrl;
             break;
@@ -64,7 +64,7 @@ fetch('Cards.JSON')
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({value})
             });
-            await response.text();
+            responseData = await response.text();
             window.location.href = memoryUrl;
             
             break;

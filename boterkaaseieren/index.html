@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boter, Kaas en Eieren</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>speel nu boter, kaas en eieren</h1>
+    <div class="game-container">
+      <div class="cell" data-row="0" data-col="0"></div>
+      <div class="cell" data-row="0" data-col="1"></div>
+      <div class="cell" data-row="0" data-col="2"></div>
+      <div class="cell" data-row="1" data-col="0"></div>
+      <div class="cell" data-row="1" data-col="1"></div>
+      <div class="cell" data-row="1" data-col="2"></div>
+      <div class="cell" data-row="2" data-col="0"></div>
+      <div class="cell" data-row="2" data-col="1"></div>
+      <div class="cell" data-row="2" data-col="2"></div>
+    </div>
+    <div id="popup-overlay" class="popup-overlay hidden">
+      <div class="popup-content">
+        <h2>Wachten op tweede speler...</h2>
+      </div>
+    </div>
+    <p id="score"></p>
+    <p id="turn"></p>
+    <button id="restart">Nieuw Spel</button>
+    <script src="bke.js"></script>
+  </body>
+</html>
