@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game - Multiplayer</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Memory Game</h2>
+        <div class="score">Score: 0 - 0</div>
+        <div id="turn-indicator">Waiting for players...</div>
+        <div class="game"></div>
+        <button class="reset" onclick="restartGame()">New Game</button>
+    </div>
+
+    <div id="waiting-overlay" class="waiting-overlay">
+        <div class="waiting-message">
+            <h3>Waiting for another player...</h3>
+            <p>Please wait while we find an opponent for you.</p>
+        </div>
+    </div>
+
+    <div id="winner-overlay" class="winner-overlay hidden">
+        <div class="winner-message">
+            <h3 id="winner-title">Game Over!</h3>
+            <p id="winner-text">Winner: Player 1</p>
+            <p id="final-score">Final Score: 8 - 0</p>
+            <button class="winner-button" onclick="closeWinnerPopup()">Play Again</button>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+nav{
+    width: 100%;
+    height: 100px;
+    background: white;
+    outline: black solid 2px;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: 2.5em;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    transition: background 0.2s;
+}
+
+/* End of navbar styling xoxo Robert :) */
+
+.body_index{
+    background: #e6302b;
+}
+
+.main_title{
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.5em;
+    color: white;
+}
+
+.main_explenation{
+    text-align: center;
+    font-size: 1.2em;
+    color: white;
+    max-width: 50%;
+    margin: 0 auto auto;
+
+}
+
+.card_container {
+    width: 300px;
+    height: 400px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card_container:hover{
+    transform: scale(1.05);
+}
+
+.card_header {
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+    position: relative;
+}
+
+.card_header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s;
+    display: block;
+}
+
+.card_body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.card_container:hover .card_body {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.card_container:hover .card_header img {
+    filter: blur(8px);
+}
+
+.card_footer {
+    background: none;
+    color: #fff;
+    padding: 0;
+    text-align: left;
+    display: flex;
+    align-items: flex-end;
+    height: 30%;
+    position: relative;
+}
+
+.card_button {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    width: auto;
+    padding: 10px 20px;
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.card_button:hover {
+    background: #1769aa;
+}
+
+.card_section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 150px;
+    flex-direction: row;
+    max-width: 100vw;
+    flex-wrap: wrap;
+}
