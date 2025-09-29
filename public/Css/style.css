@@ -9,14 +9,12 @@ nav{
     width: 100%;
     height: 100px;
     background: white;
-    outline: black solid 2px;
     display: flex;
     flex-direction: row;
     color: black;
     align-items: center;
-    align-content: center;
-    justify-content: center;
     font-size: 2.5em;
+    position: relative; 
 }
 
 nav ul {
@@ -25,6 +23,8 @@ nav ul {
     list-style: none;
     align-items: center;
     height: 100%;
+    width: 100%; 
+    justify-content: center; 
 }
 
 nav ul li a {
@@ -33,6 +33,17 @@ nav ul li a {
     font-weight: 600;
     padding: 8px 12px;
     transition: background 0.2s;
+}
+
+.HU_logo {
+    position: absolute; 
+    right: 0; 
+    top: 50%; 
+    transform: translateY(-50%);
+}
+
+.HU_logo img{
+    height: 50px; 
 }
 
 /* End of navbar styling xoxo Robert :) */
@@ -155,4 +166,23 @@ nav ul li a {
     flex-direction: row;
     max-width: 100vw;
     flex-wrap: wrap;
+}
+
+.footer_main {
+    width: 100%;
+    height: 100px;
+    background: white;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    font-size: 1.5em;
+    border-top: 2px solid #e6302b;
+}
+
+.footer_main p {
+    margin: 0;
+    font-weight: 600;
 }

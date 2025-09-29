@@ -1,169 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="index.html">
-     <script src="Js/main.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Css/style.css" />
+    <script src="Js/main.js" defer></script>
     <title>Game Lobby</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #222;
-            color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: row;
-            height: 100vh;
-        }
-        .players-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: #2d2d2d;
-            padding: 40px 0;
-        }
-        .players-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            grid-template-rows: repeat(2, 100px);
-            gap: 20px;
-        }
-        .player-spot {
-            background: #444;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1em;
-            color: #bbb;
-            border: 2px solid #555;
-        }
-        .player-spot.filled {
-            background: #4caf50;
-            color: #fff;
-            border-color: #388e3c;
-        }
-        .ready-btn {
-            margin-top: 40px;
-            padding: 15px 40px;
-            font-size: 1.2em;
-            background: #2196f3;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .ready-btn:hover {
-            background: #1769aa;
-        }
-        .chat-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            background: #23272a;
-            padding: 40px 30px;
-        }
-        .chat-messages {
-            flex: 1;
-            background: #181a1b;
-            border-radius: 8px;
-            padding: 16px;
-            overflow-y: auto;
-            margin-bottom: 20px;
-            border: 1px solid #333;
-        }
-        .chat-input-area {
-            display: flex;
-            gap: 10px;
-        }
-        .chat-input {
-            flex: 1;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #444;
-            background: #2c2f33;
-            color: #fff;
-            font-size: 1em;
-        }
-        .chat-send-btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 6px;
-            background: #43b581;
-            color: #fff;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .chat-send-btn:hover {
-            background: #238154;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow: hidden;
+        background: #e6302b;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        height: calc(100vh - 100px);
+      }
+
+      .left-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+      }
+
+      .players-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        min-height: 0;
+      }
+
+      .picture-section {
+        width: 400px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .picture-placeholder {
+        color: #ccc;
+        font-size: 1.2em;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .picture-placeholder img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .players-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(2, 100px);
+        gap: 20px;
+      }
+
+      .player-spot {
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1em;
+        color: #bbb;
+        border: 2px solid #555;
+      }
+
+      .player-spot.filled {
+        background: #4caf50;
+        color: #fff;
+        border-color: #388e3c;
+      }
+
+      .ready-btn {
+        margin-top: 40px;
+        padding: 15px 40px;
+        font-size: 1.2em;
+        background: #2196f3;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .ready-btn:hover {
+        background: #1769aa;
+      }
+
+      .chat-section {
+        flex: 1;
+        max-width: 30%;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        min-height: 0;
+      }
+
+      .chat-messages {
+        flex: 1;
+        border-radius: 8px;
+        padding: 16px;
+        overflow-y: auto;
+        margin-bottom: 15px;
+        border: 1px solid #333;
+        background: #666;
+        color: #fff;
+        min-height: 0;
+      }
+
+      .chat-input-area {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background: #333;
+        color: #fff;
+        font-size: 1em;
+      }
+
+      .chat-send-btn {
+        padding: 10px 24px;
+        border: none;
+        border-radius: 6px;
+        background: #43b581;
+        color: #fff;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .chat-send-btn:hover {
+        background: #238154;
+      }
     </style>
-</head>
-<body>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="HU_logo">
+            <a href="home"
+              ><img
+                src="/images/HU_logo.png"
+                alt="Logo van de hogeschool van Utrecht"
+            /></a>
+          </li>
+
+          <li><a href="#home">Tribe games</a></li>
+        </ul>
+      </nav>
+    </header>
+
     <div class="container">
+      <div class="left-section">
+        <div class="picture-section">
+          <div class="picture-placeholder">
+            <img src="/images/Tic-Tac-Toe.png" alt="">
+          </div>
+        </div>
+
         <div class="players-section">
-            <h2>Lobby</h2>
-            <div class="players-grid">
-                <div class="player-spot filled">Player 1<br><small>(You)</small></div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
-                <div class="player-spot">Empty</div>
+          <h2>Lobby</h2>
+
+          <div class="players-grid">
+            <div class="player-spot filled">
+              Player 1<br /><small>(You)</small>
             </div>
-            <button class="ready-btn">Ready Up</button>
+
+            <div class="player-spot">Empty</div>
+          </div>
+
+          <button class="ready-btn">Ready Up</button>
         </div>
-        <div class="chat-section">
-            <h2>Lobby Chat</h2>
-            <div class="chat-messages" id="chatMessages">
-                <!-- Chat messages will appear here -->
-            </div>
-            <form class="chat-input-area" id="chatForm" autocomplete="off">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." required />
-                <button type="submit" class="chat-send-btn">Send</button>
-            </form>
+      </div>
+
+      <div class="chat-section">
+        <h2>Lobby Chat</h2>
+
+        <div class="chat-messages" id="chatMessages">
+          <!-- Chat messages will appear here -->
         </div>
+
+        <form class="chat-input-area" id="chatForm" autocomplete="off">
+          <input type="text" class="chat-input" id="chatInput" placeholder="Type a message..." required/>
+
+          <button type="submit" class="chat-send-btn">Send</button>
+        </form>
+      </div>
     </div>
+
     <script>
-        // Simple front-end chat logic (no backend)
-        const chatForm = document.getElementById('chatForm');
-        const chatInput = document.getElementById('chatInput');
-        const chatMessages = document.getElementById('chatMessages');
+      // Simple front-end chat logic (no backend)
+      const chatForm = document.getElementById("chatForm");
+      const chatInput = document.getElementById("chatInput");
+      const chatMessages = document.getElementById("chatMessages");
+      
+      chatForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const msg = chatInput.value.trim();
+        if (msg) {
+          const div = document.createElement("div");
+          div.textContent = "You: " + msg;
+          chatMessages.appendChild(div);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          chatInput.value = "";
+        }
+      });
 
-        chatForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const msg = chatInput.value.trim();
-            if (msg) {
-                const div = document.createElement('div');
-                div.textContent = 'You: ' + msg;
-                chatMessages.appendChild(div);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                chatInput.value = '';
-            }
-        });
+      // Ready button logic
+      const readyBtn = document.querySelector(".ready-btn");
+      readyBtn.addEventListener("click", function () {
+        if (readyBtn.textContent === "Ready Up") {
+          readyBtn.textContent = "Unready";
+          readyBtn.style.background = "#f44336";
+        } else {
+          readyBtn.textContent = "Ready Up";
+          readyBtn.style.background = "#2196f3";
+        }
+      });
 
-        // Ready button logic
-        const readyBtn = document.querySelector('.ready-btn');
-        readyBtn.addEventListener('click', function() {
-            if (readyBtn.textContent === 'Ready Up') {
-                readyBtn.textContent = 'Unready';
-                readyBtn.style.background = '#f44336';
-            } else {
-                readyBtn.textContent = 'Ready Up';
-                readyBtn.style.background = '#2196f3';
-            }
-        });
+      
     </script>
-</body>
+  </body>
 </html>

@@ -26,7 +26,7 @@ fetch('Cards.JSON')
           <img src="${card.img}" alt="${card.name}">
         </div>
         <div class="card_body" style="color: ${card.color};">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur.</p>
+          <p>${card.Description}</p>
         </div>
         <footer class="card_footer" style="background-color: ${card.background_color};">
           <button id='${card.name}' class="card_button">Play</button>

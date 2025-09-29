@@ -3,31 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boter, Kaas en Eieren</title>
-    <script src="/socket.io/socket.io.js"></script>
+    <title>Tic Tac Toe Game</title>
+    <script src="/socket.io/socket.io.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>speel nu boter, kaas en eieren</h1>
-    <div class="game-container">
-      <div class="cell" data-row="0" data-col="0"></div>
-      <div class="cell" data-row="0" data-col="1"></div>
-      <div class="cell" data-row="0" data-col="2"></div>
-      <div class="cell" data-row="1" data-col="0"></div>
-      <div class="cell" data-row="1" data-col="1"></div>
-      <div class="cell" data-row="1" data-col="2"></div>
-      <div class="cell" data-row="2" data-col="0"></div>
-      <div class="cell" data-row="2" data-col="1"></div>
-      <div class="cell" data-row="2" data-col="2"></div>
-    </div>
-    <div id="popup-overlay" class="popup-overlay hidden">
-      <div class="popup-content">
-        <h2>Wachten op tweede speler...</h2>
+    <main class="game-wrapper">
+      <header class="game-header">
+        <h1>Tic Tac Toe</h1>
+      </header>
+
+      <section class="game-status">
+        <p id="turn" class="status-text">Current Turn: X</p>
+        <p id="score" class="score-text">Score: X - 0 | O - 0</p>
+      </section>
+
+      <section class="game-board">
+        <div class="game-container">
+          <div class="cell" data-row="0" data-col="0" aria-label="cell 0,0"></div>
+          <div class="cell" data-row="0" data-col="1" aria-label="cell 0,1"></div>
+          <div class="cell" data-row="0" data-col="2" aria-label="cell 0,2"></div>
+          <div class="cell" data-row="1" data-col="0" aria-label="cell 1,0"></div>
+          <div class="cell" data-row="1" data-col="1" aria-label="cell 1,1"></div>
+          <div class="cell" data-row="1" data-col="2" aria-label="cell 1,2"></div>
+          <div class="cell" data-row="2" data-col="0" aria-label="cell 2,0"></div>
+          <div class="cell" data-row="2" data-col="1" aria-label="cell 2,1"></div>
+          <div class="cell" data-row="2" data-col="2" aria-label="cell 2,2"></div>
+        </div>
+      </section>
+
+      <section class="game-controls">
+        <button id="restart" class="btn btn-primary">New Game</button>
+      </section>
+
+      <div id="popup-overlay" class="popup-overlay hidden">
+        <div class="popup-content">
+          <h2 id="winner-text"></h2>
+          <button class="btn btn-secondary" id="close-popup">Close</button>
+        </div>
       </div>
-    </div>
-    <p id="score"></p>
-    <p id="turn"></p>
-    <button id="restart">Nieuw Spel</button>
-    <script src="bke.js"></script>
+    </main>
+    <script src="TicTacToe.js" defer></script>
   </body>
 </html>
